@@ -1,3 +1,32 @@
+#selinux: Boot Huawei p20 lite Hi6250
+allow kernel system_data_file:dir {open read setattr write};
+allow kernel system_data_file:file {append getattr open setattr};
+allow kernel device:chr_file {create open setattr write};
+allow kernel device:dir {add_name write};
+allow kernel self:capability mknod;
+allow kernel unlabeled:file open;
+allow init hidl_base_hwservice:hwservice_manager add;
+allow init hwservicemanager:binder call transfer;
+allow init sys_dev_block:lnk_file read;
+allow init sysfs_led:file setattr;
+allow init system_file:file execute_no_trans;
+allow init vendor_file:file execute_no_trans;
+allow vendor_init device:chr_file getattr;
+allow vendor_init splash2_data_file:dir {add_name getattr open read setattr write};
+allow vendor_init splash2_data_file:file {create getattr open setattr write};
+allow vendor_init splash2_data_file:filesystem getattr;
+allow vendor_init system_data_file:dir setattr;
+allow vendor_init teecd_data_file_system:dir {getattr relabelto};
+allow hwservicemanager init:binder call;
+allow init splash2_data_file:dir getattr;
+allow init splash2_data_file:filesystem {mount relabelfrom relabelto};
+allow init sys_block_mmcblk0:file {open write};
+allow init sys_block_mmcblk0:lnk_file read;
+allow init sysfs_zram:lnk_file read;
+allow init teecd_data_file:dir mounton;
+allow init teecd_data_file:filesystem {mount relabelfrom relabelto};
+
+
 allow ueventd proc:file r_file_perms;
 permissive ueventd;
 
